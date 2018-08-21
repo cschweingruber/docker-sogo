@@ -21,13 +21,13 @@ RUN sed -i -e 's/^-l.*/-l localhost/' /etc/memcached.conf
 
 # SOGo daemons
 RUN mkdir /etc/service/sogod /etc/service/apache2 /etc/service/memcached
-ADD sogod.sh /etc/service/sogod/run
-ADD apache2.sh /etc/service/apache2/run
-ADD memcached.sh /etc/service/memcached/run
+ADD ../sogod.sh /etc/service/sogod/run
+ADD ../apache2.sh /etc/service/apache2/run
+ADD ../memcached.sh /etc/service/memcached/run
 
 # Make GATEWAY host available, control memcached startup
 RUN mkdir -p /etc/my_init.d
-ADD gateway.sh memcached-control.sh /etc/my_init.d/
+ADD ../gateway.sh ../memcached-control.sh /etc/my_init.d/
 
 # Interface the environment
 VOLUME /srv
