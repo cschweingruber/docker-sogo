@@ -31,7 +31,7 @@ ADD gateway.sh memcached-control.sh /etc/my_init.d/
 
 # Interface the environment
 VOLUME /srv
-EXPOSE 80 443 8800
+EXPOSE 80
 
 # Baseimage init process
 ENTRYPOINT ["/sbin/my_init"]
