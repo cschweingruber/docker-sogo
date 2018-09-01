@@ -11,6 +11,7 @@ There are different flavors of this Docker image, added as tags. To checkout a s
   - 4: newest SOGo release
   - 3: superseeded SOGo release
   - 2: old SOGo release
+  - withoutapache(2¦3¦4): no apache-daemon (sogo port 20000 exposed)
 
 ## Setup
 
