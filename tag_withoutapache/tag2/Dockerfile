@@ -27,6 +27,7 @@ ADD gateway.sh memcached-control.sh /etc/my_init.d/
 
 # Interface the environment
 VOLUME /srv
+VOLUME /usr/lib/GNUstep/SOGo/WebServerResources
 EXPOSE 20000
 
 # Baseimage init process
