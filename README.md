@@ -6,7 +6,7 @@ Dockerfile for SOGo image (based on https://github.com/JensErat/docker-sogo)
 
 This Dockerfile packages SOGo as packaged by Inverse, SOGo's creators, together with Apache 2 and memcached.
 
-There are different flavors of this Docker image, added as tags. To checkout a specific flavor, use `cschweingruber/docker-sogo:[tag]` as image name. By default, `latest` wil be used.
+There are different flavors of this Docker image, added as tags. To checkout a specific flavor, use `cschweingruber/sogo:[tag]` as image name. By default, `latest` wil be used.
 
   - 4: newest SOGo release
   - 3: superseeded SOGo release
@@ -17,7 +17,7 @@ There are different flavors of this Docker image, added as tags. To checkout a s
 
 The image stores configuration, logs and backups in `/srv`, which you should persist somewhere. Example configuration is copied during each startup of the container, which you can adjust for your own use. For creating the initial directory hierarchy and example configuration, simply run the container with the `/srv` volume already exposed or linked, for example using
 
-    docker run -v /srv/sogo:/srv cschweingruber/docker-sogo
+    docker run -v /srv/sogo:/srv cschweingruber/sogo
 
 As soon as the files are created, stop the image again. You will now find following files:
 
@@ -32,6 +32,15 @@ As soon as the files are created, stop the image again. You will now find follow
                 └── Library
 
 Create copies of the configuration files named `apache-SOGo.conf` and `sogo.conf.orig`. Don't change or link the `.orig` files, as they will be overwritten each time the container is started. They can also be used to see differences on your configuration after SOGo upgrades.
+
+#### if you use the withoutapache tags
+you could do it like this:
+
+    mkdir /srv/sogo4web
+    docker volume create -o type=none -o device=/srv/sogo4web -o o=bind sogo4web
+    docker run -v /srv/sogo:/srv -v sogo4web:/usr/lib/GNUstep/SOGo/WebServerResources -d -p 20000:20000 --name sogo4  cschweingruber/sogo:withoutapache4
+
+Then you have the static webcontent of SOGo in /srv/sogo4web and network link to SOGo on Port 20000. Bouth you can reference in your Webserver configuration.
 
 ### Database
 
@@ -102,7 +111,7 @@ Run the image in a container, expose ports as needed and making `/srv` permanent
       --publish='127.0.0.1:80:80' \
       --link='sogo-postgresql:db' \
       --volume='/srv/sogo:/srv' \
-      cschweingruber/docker-sogo
+      cschweingruber/sogo
 
 ## Upgrading and Maintenance
 
