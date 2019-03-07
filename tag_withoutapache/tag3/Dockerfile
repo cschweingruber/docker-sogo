@@ -7,7 +7,7 @@ MAINTAINER	Christian Schweingruber <c.schweingruber@catatec.ch>
 RUN echo "deb http://www.axis.cz/linux/debian xenial sogo-v3" > /etc/apt/sources.list.d/sogo.axis.cz.list && \
     apt-key adv --keyserver pool.sks-keyservers.net --recv-key 608F5293A04BE668 && \
     apt-get update && \
-    apt-get install -y --no-install-recommends gettext-base sogo sope4.9-gdl1-postgresql sope4.9-gdl1-mysql memcached && \
+    apt-get install -y --no-install-recommends gettext-base sogo sope4.9-gdl1-postgresql sope4.9-gdl1-mysql memcached tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Move SOGo's data directory to /srv
