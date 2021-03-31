@@ -8,10 +8,11 @@ This Dockerfile packages SOGo as packaged by Inverse, SOGo's creators, together 
 
 There are different flavors of this Docker image, added as tags. To checkout a specific flavor, use `cschweingruber/sogo:[tag]` as image name. By default, `latest` wil be used.
 
-  - 4: newest SOGo release
+  - 5: newest SOGo releases
+  - 4: obsolete SOGo release
   - 3: superseeded SOGo release
   - 2: old SOGo release
-  - withoutapache(2¦3¦4): no apache-daemon (sogo port 20000 exposed)
+  - withoutapache(2¦3¦5): no apache-daemon (sogo port 20000 exposed)
 
 ## Setup
 
