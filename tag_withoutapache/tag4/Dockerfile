@@ -1,10 +1,10 @@
-FROM        phusion/baseimage
+FROM        phusion/baseimage:bionic-1.0.0
 MAINTAINER	Christian Schweingruber <c.schweingruber@catatec.ch>
 # based on https://github.com/JensErat/docker-sogo
 # repo from http://www.axis.cz/linux/debian/dists
 
 # Install Apache, SOGo from repository
-RUN echo "deb http://www.axis.cz/linux/debian xenial sogo-v4" > /etc/apt/sources.list.d/sogo.axis.cz.list && \
+RUN echo "deb http://www.axis.cz/linux/debian bionic sogo-v4" > /etc/apt/sources.list.d/sogo.axis.cz.list && \
     apt-key adv --keyserver pool.sks-keyservers.net --recv-key 608F5293A04BE668 && \
     apt-get update && \
     apt-get install -y --no-install-recommends gettext-base sogo sope4.9-gdl1-postgresql sope4.9-gdl1-mysql memcached tzdata && \
