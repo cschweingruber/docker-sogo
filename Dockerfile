@@ -1,4 +1,4 @@
-FROM        phusion/baseimage
+FROM        phusion/baseimage:master
 MAINTAINER	Christian Schweingruber <c.schweingruber@catatec.ch>
 # based on https://github.com/JensErat/docker-sogo
 # repo from http://www.axis.cz/linux/debian/dists
