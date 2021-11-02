@@ -3,9 +3,11 @@ MAINTAINER	Christian Schweingruber <c.schweingruber@catatec.ch>
 # based on https://github.com/JensErat/docker-sogo
 # repo from http://www.axis.cz/linux/debian/dists
 
+RUN mkdir -p /usr/share/doc/sogo; touch /usr/share/doc/sogo/abc.sh
+
 # Install Apache, SOGo from repository
-RUN echo "deb http://www.axis.cz/linux/debian bionic sogo-v4" > /etc/apt/sources.list.d/sogo.axis.cz.list && \
-    apt-key adv --keyserver pool.sks-keyservers.net --recv-key 608F5293A04BE668 && \
+RUN echo "deb http://www.axis.cz/linux/debian bionic sogo-v5" > /etc/apt/sources.list.d/sogo.axis.cz.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 608F5293A04BE668 && \
     apt-get update && \
     apt-get install -y --no-install-recommends gettext-base sogo sope4.9-gdl1-postgresql sope4.9-gdl1-mysql memcached tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
